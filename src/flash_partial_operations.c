@@ -257,13 +257,9 @@ void f_segmentPartialErase_x(f_segment_t targetPtr, uint16_t x)
 /*
   This function is the partial erase function with a timer delay
   x is the number of clock cycles to delay using the SMCLK
-  1.024 MHZ clock as input to the timer
+  clock as input to the timer
  */
 {
-  TA1CCR0 = x - 4; // 4 cc to start operation
-  TA1CCTL0 &= ~CCIE;
-  TA1CCTL0 &= ~CCIFG;
-
   while(FCTL3 & BUSY);
 
   FCTL3 = FWPW;          // clear lock
@@ -272,23 +268,26 @@ void f_segmentPartialErase_x(f_segment_t targetPtr, uint16_t x)
   // Start Timer
   #if defined(ENABLE_PARTIAL_ERASE_SMCLK_DIV_8)
   TA1CTL = TASSEL_2 + ID__8 + MC_2 + TACLR; // use SMCLK / 8; requires 4 CC
+  #warning "SMCLK Div 8"
   #elif defined(ENABLE_PARTIAL_ERASE_SMCLK_DIV_4)
   TA1CTL = TASSEL_2 + ID__4 + MC_2 + TACLR; // use SMCLK / 4
+  #warning "SMCLK Div 4"
   #else
   TA1CTL = TASSEL_2 + MC_2 + TACLR; // use SMCLK
+  #warning "SMCLK Div 1"
   #endif
 
   // Dummy Write
   *(uint16_t*)targetPtr = 0x0000; // 4 cc
+
   
-  while(!(TA1CCTL0 & CCIFG));
+  while (TA1R < x);
 
   FCTL3 = FWPW + EMEX; // emergency exit
   FCTL1 = FWPW; // clear ERASE
   FCTL3 = FWPW + LOCK; // lock
 
   TA1CTL &= ~MC_3; // halt timer
-  TA1CCTL0 &= ~CCIFG;
 }
 void end_f_segmentPartialErase_x(void) {}
 
