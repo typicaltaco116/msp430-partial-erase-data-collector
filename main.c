@@ -76,49 +76,49 @@ static void doRoutineStatisticsCSV(f_bank_t bankPtr, char* charBuffer)
   fs_stats_s stats;
 
   uint16_t testValues[20] = {
-    (uint16_t)( 0.0100E-3 * SMCLK_8MHZ / 1 ), //  83
-    (uint16_t)( 0.0253E-3 * SMCLK_8MHZ / 1 ), //  211
-    (uint16_t)( 0.0405E-3 * SMCLK_8MHZ / 1 ), //  339
-    (uint16_t)( 0.0558E-3 * SMCLK_8MHZ / 1 ), //  467
-    (uint16_t)( 0.0711E-3 * SMCLK_8MHZ / 1 ), //  596
-    (uint16_t)( 0.0863E-3 * SMCLK_8MHZ / 1 ), //  724
-    (uint16_t)( 0.1016E-3 * SMCLK_8MHZ / 1 ), //  852
-    (uint16_t)( 0.1168E-3 * SMCLK_8MHZ / 1 ), //  980
-    (uint16_t)( 0.1321E-3 * SMCLK_8MHZ / 1 ), //  1108
-    (uint16_t)( 0.1474E-3 * SMCLK_8MHZ / 1 ), //  1236
-    (uint16_t)( 0.1626E-3 * SMCLK_8MHZ / 1 ), //  1364
-    (uint16_t)( 0.1779E-3 * SMCLK_8MHZ / 1 ), //  1492
-    (uint16_t)( 0.1932E-3 * SMCLK_8MHZ / 1 ), //  1620
-    (uint16_t)( 0.2084E-3 * SMCLK_8MHZ / 1 ), //  1748
-    (uint16_t)( 0.2237E-3 * SMCLK_8MHZ / 1 ), //  1876
-    (uint16_t)( 0.2389E-3 * SMCLK_8MHZ / 1 ), //  2004
-    (uint16_t)( 0.2542E-3 * SMCLK_8MHZ / 1 ), //  2132
-    (uint16_t)( 0.2695E-3 * SMCLK_8MHZ / 1 ), //  2260
-    (uint16_t)( 0.2847E-3 * SMCLK_8MHZ / 1 ), //  2388
-    (uint16_t)( 0.3000E-3 * SMCLK_8MHZ / 1 ), //  2516
+    (uint16_t)( 10.0000E-6 * SMCLK_8MHZ / 1.0 ), //  83
+    (uint16_t)( 25.2632E-6 * SMCLK_8MHZ / 1.0 ), //  211
+    (uint16_t)( 40.5263E-6 * SMCLK_8MHZ / 1.0 ), //  339
+    (uint16_t)( 55.7895E-6 * SMCLK_8MHZ / 1.0 ), //  467
+    (uint16_t)( 71.0526E-6 * SMCLK_8MHZ / 1.0 ), //  596
+    (uint16_t)( 86.3158E-6 * SMCLK_8MHZ / 1.0 ), //  724
+    (uint16_t)( 101.5789E-6 * SMCLK_8MHZ / 1.0 ), //  852
+    (uint16_t)( 116.8421E-6 * SMCLK_8MHZ / 1.0 ), //  980
+    (uint16_t)( 132.1053E-6 * SMCLK_8MHZ / 1.0 ), //  1108
+    (uint16_t)( 147.3684E-6 * SMCLK_8MHZ / 1.0 ), //  1236
+    (uint16_t)( 162.6316E-6 * SMCLK_8MHZ / 1.0 ), //  1364
+    (uint16_t)( 177.8947E-6 * SMCLK_8MHZ / 1.0 ), //  1492
+    (uint16_t)( 193.1579E-6 * SMCLK_8MHZ / 1.0 ), //  1620
+    (uint16_t)( 208.4211E-6 * SMCLK_8MHZ / 1.0 ), //  1748
+    (uint16_t)( 223.6842E-6 * SMCLK_8MHZ / 1.0 ), //  1876
+    (uint16_t)( 238.9474E-6 * SMCLK_8MHZ / 1.0 ), //  2004
+    (uint16_t)( 254.2105E-6 * SMCLK_8MHZ / 1.0 ), //  2132
+    (uint16_t)( 269.4737E-6 * SMCLK_8MHZ / 1.0 ), //  2260
+    (uint16_t)( 284.7368E-6 * SMCLK_8MHZ / 1.0 ), //  2388
+    (uint16_t)( 300.0000E-6 * SMCLK_8MHZ / 1.0 ), //  2516
   };
 
   float testValuesFloat[20] = {
-    ( 0.0099 ),
-    ( 0.0252 ),
-    ( 0.0404 ),
-    ( 0.0557 ),
-    ( 0.0710 ),
-    ( 0.0863 ),
-    ( 0.1016 ),
-    ( 0.1168 ),
-    ( 0.1321 ),
-    ( 0.1473 ),
-    ( 0.1626 ),
-    ( 0.1779 ),
-    ( 0.1931 ),
-    ( 0.2084 ),
-    ( 0.2236 ),
-    ( 0.2389 ),
-    ( 0.2542 ),
-    ( 0.2694 ),
-    ( 0.2847 ),
-    ( 0.2999 ),
+    ( 9.8944 ),
+    ( 25.1532 ),
+    ( 40.4119 ),
+    ( 55.6707 ),
+    ( 71.0487 ),
+    ( 86.3075 ),
+    ( 101.5663 ),
+    ( 116.8251 ),
+    ( 132.0839 ),
+    ( 147.3427 ),
+    ( 162.6015 ),
+    ( 177.8603 ),
+    ( 193.1190 ),
+    ( 208.3778 ),
+    ( 223.6366 ),
+    ( 238.8954 ),
+    ( 254.1542 ),
+    ( 269.4130 ),
+    ( 284.6718 ),
+    ( 299.9306 ),
   };
 
   // SET POINTER BACK TO BASE SEGMENT
@@ -127,7 +127,7 @@ static void doRoutineStatisticsCSV(f_bank_t bankPtr, char* charBuffer)
   Serial0_write("----------------------------------------------------------------------------------------------------" ENDL);
   Serial0_write("  Segment Bit Errors (CSV)" ENDL);
   Serial0_write("----------------------------------------------------------------------------------------------------" ENDL);
-  Serial0_write("Partial Erase Times,");
+  Serial0_write("Partial Erase Times (us),");
 
   for (uint16_t i = 0; i < 20; ++i) {
     snprintf(charBuffer, BUF_SIZE, "%6.4f, ", testValuesFloat[i]);
